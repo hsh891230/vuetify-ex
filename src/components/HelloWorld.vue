@@ -1,58 +1,102 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <v-container fluid>
+    <v-row dense>
+      <v-col cols="9">
+        총 비용
+      </v-col>
+      <v-col cols="3" class="text-right">
+        ￦100,000
+      </v-col>
+      <v-col cols="12">
+        <v-divider></v-divider>
+        <v-row dense>
+          <v-col cols="9">
+            여행 준비 비용
+          </v-col>
+          <v-col cols="3" class="text-right">
+            ￦40,000
+          </v-col>
+          <v-col cols="12">
+            <v-divider></v-divider>
+            <v-row dense v-for="i in 2" :key="i">
+              <v-col cols="9" class="pl-4">
+                내용 {{ i }}
+              </v-col>
+              <v-col cols="3" class="text-right">
+                ￦40,000
+              </v-col>
+            </v-row>
+            <v-row dense>
+              <v-col offset="9" class="text-right">
+                <v-btn x-small>비용 추가</v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+        <v-divider></v-divider>
+        <v-row dense>
+          <v-col cols="9">
+            Day 1
+          </v-col>
+          <v-col cols="3" class="text-right">
+            ￦40,000
+          </v-col>
+          <v-col cols="12">
+            <v-divider></v-divider>
+            <v-row dense v-for="i in 2" :key="i">
+              <v-col cols="9" class="pl-4">
+                내용 {{ i }}
+              </v-col>
+              <v-col cols="3" class="text-right">
+                ￦40,000
+              </v-col>
+            </v-row>
+            <v-row dense>
+              <v-col offset="9" class="text-right">
+                <v-btn x-small>비용 추가</v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+          <v-col cols="12">
+            <v-row dense>
+              <v-col cols="9" class="pl-4" v-ripple @click="show = !show">
+                장소별
+                <v-icon v-if="show">mdi-menu-down</v-icon>
+                <v-icon v-else>mdi-menu-up</v-icon>
+              </v-col>
+              <v-col cols="3" class="text-right">
+                ￦40,000
+              </v-col>
+              <v-col cols="12" v-show="show">
+                <v-divider></v-divider>
+                <v-row dense v-for="i in 3" :key="i">
+                  <v-col cols="9" class="pl-8">
+                    장소 - {{ i }}
+                  </v-col>
+                  <v-col cols="3" class="text-right">
+                    ￦40,000
+                  </v-col>
+                  <v-col offset="9" class="text-right">
+                    ￦10,000
+                  </v-col>
+                  <v-col offset="9" class="text-right">
+                    <v-btn x-small>비용 추가</v-btn>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  data: () => ({
+    show: false
+  }),
+};
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
